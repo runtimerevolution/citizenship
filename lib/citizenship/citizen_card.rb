@@ -1,6 +1,6 @@
 module Citizenship
   #http://www.cartaodecidadao.pt/images/stories/Algoritmo_Num_Documento_CC.pdf
-  def check_citizen_card!(number)
+  def self.check_citizen_card!(number)
     raise ArgumentError, 'number can\'t be nil' if number.nil?
 
     number = number.delete(' ')
@@ -29,7 +29,7 @@ module Citizenship
     true
   end
 
-  def check_citizen_card(number)
+  def self.check_citizen_card(number)
     check_citizen_card!(number)
   rescue Error, ArgumentError
     false
