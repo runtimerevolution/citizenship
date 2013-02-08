@@ -1,4 +1,5 @@
 require 'simplecov'
+require 'pry'
 
 #setup simplecov
 SimpleCov.start do
@@ -6,3 +7,7 @@ SimpleCov.start do
 end
 
 require File.expand_path('../../lib/citizenship', __FILE__)
+
+RSpec.configure do |cfg|
+  cfg.include(Citizenship)
+end
