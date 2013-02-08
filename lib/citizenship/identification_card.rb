@@ -9,7 +9,8 @@ module Citizenship
       digit * (multiplier += 1)
     end.reduce(:+) || 0
 
-    raise Error, "Invalid check digit" if (11 - result % 11) != check_digit.to_i
+    control_number = 0 if (control_number = 11 - result % 11) == 10 #Cover for the digit collision flaw
+    raise Error, "Invalid check digit" if control_number != check_digit.to_i
     true
   end
 
