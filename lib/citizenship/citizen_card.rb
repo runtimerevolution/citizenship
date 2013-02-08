@@ -10,13 +10,13 @@ module Citizenship
     double_digit = false
 
     check_digit = number.reverse.split('').map do |element|
-      #switch letters for the value in the converstion table (see 2.3. on Algoritmo_Num_Documento_CC.pdf)
+      #switch letters for the value in the conversion table (see 2.3. on Algoritmo_Num_Documento_CC.pdf)
       is_number?(element) ? element : ('a'..'z').to_a.find_index(element.downcase) + 10
     end.map(&:to_i).map do |digit|
       begin
         if double_digit #starting on the 2nd value double every value steping by 2
           value = digit * 2
-          value >= 10 ? value - 9 : value #If the doubing result is 10 or more, subtract 9
+          value >= 10 ? value - 9 : value #If the doubling result is 10 or more, subtract 9
         else
           digit
         end
@@ -35,5 +35,3 @@ module Citizenship
     false
   end
 end
-
-#('a'..'z').to_a.find_index('f') + 10

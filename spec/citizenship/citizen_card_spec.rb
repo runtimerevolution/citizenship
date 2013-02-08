@@ -7,7 +7,7 @@ describe 'citizen card validation' do
   end
 
   it 'fails on invalid citizen card numbers' do
-    expect(check_citizen_card('')).to be_false
+    expect(Citizenship.check_citizen_card('')).to be_false
     expect { Citizenship.check_citizen_card!(nil) }.to raise_error(ArgumentError)
     expect { Citizenship.check_citizen_card!('12345678 9 ZZ8') }.to raise_error(Citizenship::Error)
   end
