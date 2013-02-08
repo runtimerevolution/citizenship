@@ -1,6 +1,6 @@
 #see: http://geramat.blogs.sapo.pt/13528.html
 module Citizenship
-  def self.identification_card_check!(number, check_digit)
+  def self.valid_identification_card!(number, check_digit)
     raise ArgumentError, 'number can\'t be nil' if number.nil?
     raise ArgumentError, 'check digit can\'t be nil' if check_digit.nil?
 
@@ -13,9 +13,9 @@ module Citizenship
     true
   end
 
-  def self.identification_card_check(number, check_digit)
-    identification_card_check!(number, check_digit)
-  rescue Error, ArgumentError
+  def self.valid_identification_card?(number, check_digit)
+    valid_identification_card!(number, check_digit)
+  rescue Error
     false
   end
 end
