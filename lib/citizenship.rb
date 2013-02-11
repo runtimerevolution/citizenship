@@ -1,5 +1,6 @@
 require 'citizenship/version'
 require 'citizenship/nif'
+require 'citizenship/nib'
 require 'citizenship/citizen_card'
 require 'citizenship/identification_card'
 
