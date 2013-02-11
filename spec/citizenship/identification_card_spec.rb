@@ -1,14 +1,16 @@
 describe 'identification card validation' do
   it 'passes on valid identification card numbers' do
+
     expect(Citizenship.valid_identification_card?('156 944 8', '8')).to be_true
-    expect { Citizenship.valid_identification_card!('156 944 8', '8') }.not_to raise_error
+    expect(Citizenship.valid_identification_card?('156 944 80', '4')).to be_true
+    expect(Citizenship.valid_identification_card!('156 944 8', '8')).to eq('156 944 8')
   end
 
-  it 'fails on invalid identification card numbers' do
+  it 'fails on invalid identification card numbers', focus: true do
     expect(Citizenship.valid_identification_card?('156 944 8', '7')).to be_false
     expect { Citizenship.valid_identification_card!('156 944 8', '7') }.to raise_error(Citizenship::Error)
     expect { Citizenship.valid_identification_card!('', '0') }.to raise_error(Citizenship::Error)
-    expect { Citizenship.valid_identification_card?(nil, '0') }.to raise_error(ArgumentError)
+    expect { Citizenship.valid_identification_card!(nil, nil) }.to raise_error(Citizenship::Error)
   end
 
   it 'covers control digit collision flaw' do

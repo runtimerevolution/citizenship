@@ -1,11 +1,31 @@
 require 'citizenship/version'
+require 'citizenship/nif'
 require 'citizenship/citizen_card'
 require 'citizenship/identification_card'
 
 module Citizenship
+  class Error < StandardError; end
+
+  private
+  #Decimal check bit common processing
+  def self.decimal_check_digit(number, cover_digit_collision_flaw = true)
+    number = String(number)
+
+    multiplier = 1
+    result = number.delete(' ').split('').map(&:to_i).reverse.map do |digit|
+      digit * (multiplier += 1)
+    end.reduce(:+) || 0
+
+    #Cover for the digit collision flaw?
+    return 0 if (control_number = 11 - result % 11) > 9 and cover_digit_collision_flaw
+    control_number
+  end
+
+  def self.decimal_check_digit_match?(number, check_digit, cover_digit_collision_flaw = true)
+    decimal_check_digit(number, cover_digit_collision_flaw) == check_digit.to_i
+  end
+
   def self.is_number?(i)
     true if Float(i) rescue false
   end
-
-  class Error < StandardError; end
 end

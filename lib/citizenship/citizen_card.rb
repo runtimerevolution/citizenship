@@ -1,17 +1,15 @@
 module Citizenship
   #http://www.cartaodecidadao.pt/images/stories/Algoritmo_Num_Documento_CC.pdf
   def self.valid_citizen_card!(number)
-    raise ArgumentError, 'number can\'t be nil' if number.nil?
+    id_number = String(number).delete(' ')
 
-    number = number.delete(' ')
-
-    raise Error, 'Invalid size' if number.size != 12
+    raise Error, 'Invalid size' if id_number.size != 12
 
     double_digit = false
-
-    check_digit = number.reverse.split('').map do |element|
+    conversion_table = ('a'..'z').to_a
+    check_digit = id_number.reverse.split('').map do |element|
       #switch letters for the value in the conversion table (see 2.3. on Algoritmo_Num_Documento_CC.pdf)
-      is_number?(element) ? element : ('a'..'z').to_a.find_index(element.downcase) + 10
+      is_number?(element) ? element : conversion_table.find_index(element.downcase) + 10
     end.map(&:to_i).map do |digit|
       begin
         if double_digit #starting on the 2nd value double every value steping by 2
@@ -26,11 +24,12 @@ module Citizenship
     end.reduce(:+) #sum everything
 
     raise Error, "Invalid check digit" if check_digit % 10 != 0
-    true
+    number
   end
 
   def self.valid_citizen_card?(number)
     valid_citizen_card!(number)
+    true
   rescue Error
     false
   end
