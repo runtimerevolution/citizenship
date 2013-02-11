@@ -3,6 +3,7 @@ require 'citizenship/nif'
 require 'citizenship/nib'
 require 'citizenship/citizen_card'
 require 'citizenship/identification_card'
+require 'citizenship/phone'
 
 module Citizenship
   class Error < StandardError; end
