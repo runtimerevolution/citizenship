@@ -30,4 +30,8 @@ module Citizenship
   def self.is_number?(i)
     true if Float(i) rescue false
   end
+
+  def self.remove_special_chars(str)
+    String(str).delete(' ').delete('-').delete('.')
+  end
 end

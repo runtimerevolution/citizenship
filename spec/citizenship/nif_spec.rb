@@ -2,6 +2,7 @@ describe 'NIF validation' do
   it 'passes for valid NIFs' do
     expect(Citizenship.valid_nif?('123456789')).to be_true
     expect(Citizenship.valid_nif!('123456789')).to eq('123456789')
+    expect(Citizenship.valid_nif!('123456789')).to eq('123456789')
   end
 
   it 'fails on invalid NIFs' do

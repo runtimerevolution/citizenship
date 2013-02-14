@@ -1,7 +1,7 @@
 module Citizenship
   #http://www.cartaodecidadao.pt/images/stories/Algoritmo_Num_Documento_CC.pdf
   def self.valid_citizen_card!(number)
-    id_number = String(number).delete(' ')
+    id_number = remove_special_chars(number)
 
     raise Error, 'Invalid size' if id_number.size != 12
 

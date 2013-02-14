@@ -4,6 +4,8 @@ describe 'NIB validation' do
 
     expect(Citizenship.valid_nib!(nib)).to eq(nib)
     expect(Citizenship.valid_nib?(nib)).to be_true
+    expect(Citizenship.valid_nib?('0035-03730000539-1512-80')).to be_true
+    expect(Citizenship.valid_nib?('0035.03730000539.1512.80')).to be_true
   end
 
   it 'fails for invalid NIBs' do

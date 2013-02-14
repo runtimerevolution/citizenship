@@ -22,7 +22,7 @@ module Citizenship
                   '0781', #Direcção Geral do Tesouro
                   '5180'] #Caixa Central de Crédito Agrícola Mútuo
 
-    escaped_nib = String(nib).delete(' ')
+    escaped_nib = remove_special_chars(nib)
     raise Error, "invalid size" unless escaped_nib.size == 21
     raise Error, "Invalid bank code: #{escaped_nib[0..3]}" unless bank_codes.include?(escaped_nib[0..3])
 

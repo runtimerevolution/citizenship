@@ -4,6 +4,8 @@ describe 'citizen card validation' do
 
     expect(Citizenship.valid_citizen_card?(cc_number)).to be_true
     expect(Citizenship.valid_citizen_card!(cc_number)).to eq(cc_number)
+    expect(Citizenship.valid_citizen_card!('00000000-0-ZZ-4')).to eq('00000000-0-ZZ-4')
+    expect(Citizenship.valid_citizen_card!('00000000.0.ZZ.4')).to eq('00000000.0.ZZ.4')
   end
 
   it 'fails on invalid citizen card numbers' do
