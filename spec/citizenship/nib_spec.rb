@@ -10,6 +10,7 @@ describe 'NIB validation' do
     nib = '003503730000539151200'
 
     expect{ Citizenship.valid_nib!(nib) }.to raise_error(Citizenship::Error)
+    expect{ Citizenship.valid_nib!('000003730000539151252') }.to raise_error(Citizenship::Error) #invalid bank code
     expect(Citizenship.valid_nib?(nib)).to be_false
     expect(Citizenship.valid_nib?('')).to be_false
   end

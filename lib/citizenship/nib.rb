@@ -24,7 +24,7 @@ module Citizenship
 
     escaped_nib = String(nib).delete(' ')
     raise Error, "invalid size" unless escaped_nib.size == 21
-    raise Error, "Invalid bank code: #{bank_code}" unless bank_codes.include?(bank_code = escaped_nib[0..3])
+    raise Error, "Invalid bank code: #{escaped_nib[0..3]}" unless bank_codes.include?(escaped_nib[0..3])
 
     check_digit = escaped_nib[19..20].to_i
     escaped_nib = escaped_nib[0..18]
