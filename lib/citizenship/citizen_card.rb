@@ -3,7 +3,7 @@ module Citizenship
   def self.valid_citizen_card!(number)
     id_number = remove_special_chars(number)
 
-    raise Error, 'Invalid size' if id_number.size != 12
+    raise CitizenCardError, :size if id_number.size != 12
 
     double_digit = false
     conversion_table = ('a'..'z').to_a
@@ -23,14 +23,14 @@ module Citizenship
       end
     end.reduce(:+) #sum everything
 
-    raise Error, "Invalid check digit" if check_digit % 10 != 0
+    raise CitizenCardError, :invalid_check_digit if check_digit % 10 != 0
     number
   end
 
   def self.valid_citizen_card?(number)
     valid_citizen_card!(number)
     true
-  rescue Error
+  rescue CitizenCardError
     false
   end
 end

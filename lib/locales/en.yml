@@ -1,0 +1,24 @@
+en:
+  citizenship:
+    nif:
+      size: "NIF must have 9 digits"
+      prefix: "NIF first number has to be one of the following: %{prefixes}"
+      invalid_check_digit: "Invalid check digit"
+    nib:
+      size: "NIB must have 21 digits"
+      invalid_bank_code: "Invalid bank code: %{bank_code}"
+      invalid_check_digit: "Invalid check digit"
+    citizen_card:
+      size: "Invalid size"
+      invalid_check_digit: "Invalid check digit"
+    identification_card:
+      size: "Invalid size"
+      invalid_check_digit: "Invalid check digit"
+    phone:
+      invalid_phone_number: "Invalid phone number"
+
+
+
+
+
+

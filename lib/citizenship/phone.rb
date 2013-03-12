@@ -7,7 +7,7 @@ module Citizenship
     regexp_template = "^#{country_prefix}(#{prefix_whitelist}\\d{7})$"
 
     phone_number = String(number).delete(' ').delete('-')
-    raise Error, "Invalid phone number: #{number}" unless phone_number.match(Regexp.new(regexp_template))
+    raise PhoneError, :invalid_phone_number unless phone_number.match(Regexp.new(regexp_template))
 
     return number.sub(Regexp.new(country_prefix), '').lstrip if strip_country_prefix
     number

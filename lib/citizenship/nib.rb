@@ -23,8 +23,8 @@ module Citizenship
                   '5180'] #Caixa Central de Crédito Agrícola Mútuo
 
     escaped_nib = remove_special_chars(nib)
-    raise Error, "invalid size" unless escaped_nib.size == 21
-    raise Error, "Invalid bank code: #{escaped_nib[0..3]}" unless bank_codes.include?(escaped_nib[0..3])
+    raise NIBError.new(:size) unless escaped_nib.size == 21
+    raise NIBError.new(:invalid_bank_code, bank_code: escaped_nib[0..3]) unless bank_codes.include?(escaped_nib[0..3])
 
     check_digit = escaped_nib[19..20].to_i
     escaped_nib = escaped_nib[0..18]
@@ -35,14 +35,14 @@ module Citizenship
     end.reduce(:+)
 
     control_number = 98 - sum % 97
-    raise Error, 'Invalid check digit' unless check_digit == control_number
+    raise NIBError.new(:invalid_check_digit) unless check_digit == control_number
     nib
   end
 
   def self.valid_nib?(nib)
     valid_nib!(nib)
     true
-  rescue Error
+  rescue NIBError
     false
   end
 end

@@ -1,4 +1,5 @@
 require 'citizenship/version'
+require 'citizenship/errors'
 require 'citizenship/nif'
 require 'citizenship/nib'
 require 'citizenship/citizen_card'
@@ -6,8 +7,6 @@ require 'citizenship/identification_card'
 require 'citizenship/phone'
 
 module Citizenship
-  class Error < StandardError; end
-
   private
   #Decimal check bit common processing
   def self.decimal_check_digit(number, cover_digit_collision_flaw = true)
