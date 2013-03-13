@@ -5,6 +5,7 @@ require 'citizenship/nib'
 require 'citizenship/citizen_card'
 require 'citizenship/identification_card'
 require 'citizenship/phone'
+require 'citizenship/rails/validators' if defined?(ActiveModel)
 
 module Citizenship
   private
