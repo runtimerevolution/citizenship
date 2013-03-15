@@ -1,18 +1,18 @@
 "pt-PT":
   citizenship:
     nif:
-      size: "O NIF deve conter 9 digitos"
-      prefix: "O primeiro digito do NIF tem de ser um dos seguintes: %{prefixes}"
-      invalid_check_digit: "NIF Inválido"
+      size: "deve conter 9 digitos"
+      prefix: "o primeiro digito tem de ser um dos seguintes: %{prefixes}"
+      invalid_check_digit: "inválido"
     nib:
-      size: "NIB deve conter 21 digitos"
+      size: "deve conter 21 digitos"
       invalid_bank_code: "Código bancário inválido: %{bank_code}"
-      invalid_check_digit: "NIB inválido"
+      invalid_check_digit: "inválido"
     citizen_card:
       size: "Tamanho inválido"
       invalid_check_digit: "Cartão de cidadão inválido"
     identification_card:
       size: "Tamanho inválido"
-      invalid_check_digit: "BI inválido"
+      invalid_check_digit: "inválido"
     phone:
-      invalid_phone_number: "Nº de telefone inválido"
+      invalid_phone_number: "inválido"
