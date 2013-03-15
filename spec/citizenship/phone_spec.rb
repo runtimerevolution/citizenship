@@ -20,6 +20,10 @@ describe 'phone number validation' do
       expect(Citizenship.valid_phone!('+351 93 933 2233', only_prefixes: ['93', '96'])).to eq('+351 93 933 2233')
       expect(Citizenship.valid_phone!('+351 96 933 2233', only_prefixes: ['93', '96'])).to eq('+351 96 933 2233')
     end
+
+    it 'strict validation disallow whitspaces, dashes and dots' do
+      expect(Citizenship.valid_phone?('262999666', strict: true)).to be_true
+    end
   end
 
   context 'fails for invalid phone numbers' do
@@ -38,6 +42,14 @@ describe 'phone number validation' do
     it 'by designated prefix' do
       expect(Citizenship.valid_phone?('96 933 2233', only_prefixes: '93')).to be_false
       expect(Citizenship.valid_phone?('96 933 2233', only_prefixes: ['91', '93'])).to be_false
+    end
+
+
+    it 'strict validation disallow whitspaces, dashes and dots' do
+      expect(Citizenship.valid_phone?('262-999-666', strict: true)).to be_false
+      expect(Citizenship.valid_phone?('262 999 666', strict: true)).to be_false
+      expect(Citizenship.valid_phone?(' 262999666', strict: true)).to be_false
+      expect(Citizenship.valid_phone?(' 262999666 ', strict: true)).to be_false
     end
   end
 end

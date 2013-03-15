@@ -3,7 +3,7 @@ module Citizenship
     module Validators
       class NifValidator < ActiveModel::EachValidator
         def validate_each(record, attribute, value)
-          Citizenship.valid_nif!(value) if value.present?
+          Citizenship.valid_nif!(value, options) if value.present?
         rescue Citizenship::NIFError => e
           record.errors[attribute] << (options[:message] || e.message)
         end
@@ -11,7 +11,7 @@ module Citizenship
 
       class NibValidator < ActiveModel::EachValidator
         def validate_each(record, attribute, value)
-          Citizenship.valid_nib!(value) if value.present?
+          Citizenship.valid_nib!(value, options) if value.present?
         rescue Citizenship::NIBError => e
           record.errors[attribute] << (options[:message] || e.message)
         end
@@ -19,7 +19,7 @@ module Citizenship
 
       class PhoneValidator < ActiveModel::EachValidator
         def validate_each(record, attribute, value)
-          Citizenship.valid_phone!(value) if value.present?
+          Citizenship.valid_phone!(value, options) if value.present?
         rescue Citizenship::PhoneError => e
           record.errors[attribute] << (options[:message] || e.message)
         end

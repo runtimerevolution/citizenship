@@ -11,4 +11,11 @@ describe 'NIF validation' do
     expect { Citizenship.valid_nif!('223456789') }.to raise_error(Citizenship::Error)
     expect(Citizenship.valid_nif?(nil)).to be_false
   end
+
+  it 'strict validation disallow whitspaces and others' do
+    expect(Citizenship.valid_nif?(' 123456789', strict: true)).to be_false
+    expect(Citizenship.valid_nif?('123456789 ', strict: true)).to be_false
+    expect(Citizenship.valid_nif?('12345 6789', strict: true)).to be_false
+    expect(Citizenship.valid_nif?('123456789', strict: true)).to be_true
+  end
 end

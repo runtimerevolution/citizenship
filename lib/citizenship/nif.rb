@@ -1,7 +1,8 @@
 #see: http://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal
 module Citizenship
-  def self.valid_nif!(number)
-    id_number = String(number).delete(' ')
+  def self.valid_nif!(number, options = {})
+    strict = options.fetch(:strict, false)
+    id_number = strict ? number : String(number).delete(' ')
     first_digit_universe = [1, 2, 5, 6, 8, 9]
 
     raise NIFError.new(:size) if id_number.size != 9
@@ -10,8 +11,8 @@ module Citizenship
     number
   end
 
-  def self.valid_nif?(number)
-    valid_nif!(number)
+  def self.valid_nif?(number, options = {})
+    valid_nif!(number, options)
     true
   rescue NIFError
     false

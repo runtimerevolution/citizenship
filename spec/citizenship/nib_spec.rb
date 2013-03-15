@@ -16,4 +16,12 @@ describe 'NIB validation' do
     expect(Citizenship.valid_nib?(nib)).to be_false
     expect(Citizenship.valid_nib?('')).to be_false
   end
+
+  it 'strict validation disallow whitspaces, dashes and dots' do
+    expect(Citizenship.valid_nib?('0035-03730000539-1512-80', strict: true)).to be_false
+    expect(Citizenship.valid_nib?('0035.03730000539.1512.80', strict: true)).to be_false
+    expect(Citizenship.valid_nib?('0035 03730000539 1512 80', strict: true)).to be_false
+    expect(Citizenship.valid_nib?('0035 03730000539 1512 80 ', strict: true)).to be_false
+    expect(Citizenship.valid_nib?('003503730000539151280', strict: true)).to be_true
+  end
 end

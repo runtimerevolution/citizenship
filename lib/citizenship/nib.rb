@@ -1,6 +1,7 @@
 #see: http://pt.wikipedia.org/wiki/N%C3%BAmero_de_Identifica%C3%A7%C3%A3o_Banc%C3%A1ria
 module Citizenship
-  def self.valid_nib!(nib)
+  def self.valid_nib!(nib, options = {})
+    strict = options.fetch(:strict, false)
     bank_codes = ['0007', #BES
                   '0010', #BPI
                   '0018', #Santander
@@ -22,7 +23,7 @@ module Citizenship
                   '0781', #Direcção Geral do Tesouro
                   '5180'] #Caixa Central de Crédito Agrícola Mútuo
 
-    escaped_nib = remove_special_chars(nib)
+    escaped_nib = strict ? nib : remove_special_chars(nib)
     raise NIBError.new(:size) unless escaped_nib.size == 21
     raise NIBError.new(:invalid_bank_code, bank_code: escaped_nib[0..3]) unless bank_codes.include?(escaped_nib[0..3])
 
@@ -39,8 +40,8 @@ module Citizenship
     nib
   end
 
-  def self.valid_nib?(nib)
-    valid_nib!(nib)
+  def self.valid_nib?(nib, options = {})
+    valid_nib!(nib, options)
     true
   rescue NIBError
     false
