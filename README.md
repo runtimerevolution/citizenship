@@ -1,6 +1,6 @@
 # Citizenship
 
-TODO: Write a gem description
+Citizenship provides easy validations on personal documents, addresses, bank account numbers and other personal information.
 
 ## Installation
 
@@ -15,10 +15,6 @@ And then execute:
 Or install it yourself as:
 
     $ gem install citizenship
-
-## Usage
-
-TODO: Write usage instructions here
 
 ## Contributing
 
