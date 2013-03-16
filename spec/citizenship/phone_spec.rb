@@ -13,7 +13,11 @@ describe 'phone number validation' do
 
     it 'with country prefix' do
       expect(Citizenship.valid_phone!('+351 93 933 2233')).to eq('+351 93 933 2233')
-      expect(Citizenship.valid_phone!('+351 93 933 2233', strip_country_prefix: true)).to eq('93 933 2233')
+
+    end
+
+    it 'without countryprefix' do
+      expect(Citizenship.valid_phone?('+351 93 933 2233', allow_country_prefix: false)).to be_false
     end
 
     it 'by designated prefix', focus: true do
