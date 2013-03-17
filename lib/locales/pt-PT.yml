@@ -16,3 +16,5 @@
       invalid_check_digit: "inválido"
     phone:
       invalid_phone_number: "inválido"
+    email:
+      invalid_email: "inválido"

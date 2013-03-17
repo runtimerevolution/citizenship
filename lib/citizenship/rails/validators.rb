@@ -24,8 +24,16 @@ module Citizenship
           record.errors[attribute] << (options[:message] || e.message)
         end
       end
+
+      class EmailValidator < ActiveModel::EachValidator
+        def validate_each(record, attribute, value)
+          Citizenship.valid_email!(value) if value.present?
+        rescue Citizenship::PhoneError => e
+          record.errors[attribute] << (options[:message] || e.message)
+        end
+      end
     end
   end
 end
 
-ActiveRecord::Base.send :include, Citizenship::Rails::Validators
+ActiveRecord::Base.send(:include, Citizenship::Rails::Validators)

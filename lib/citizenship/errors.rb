@@ -40,4 +40,10 @@ module Citizenship
       super(key, values, :phone)
     end
   end
+
+  class EmailError < Error
+    def initialize(key, values = {})
+      super(key, values, :email)
+    end
+  end
 end
