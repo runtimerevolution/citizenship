@@ -1,7 +1,8 @@
 module Citizenship
+  EMAIL_REGEXP = /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/i
+
   def self.valid_email!(email)
-    regexp = /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/
-    raise EmailError, :invalid_email unless email.match(regexp)
+    raise EmailError, :invalid_email unless email.match(EMAIL_REGEXP)
     email
   end
 
