@@ -46,4 +46,10 @@ module Citizenship
       super(key, values, :email)
     end
   end
+
+  class ZipCodeError < Error
+    def initialize(key, values = {})
+      super(key, values, :zip_code)
+    end
+  end
 end

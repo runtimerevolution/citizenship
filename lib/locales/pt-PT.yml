@@ -18,3 +18,5 @@
       invalid_phone_number: "inválido"
     email:
       invalid_email: "inválido"
+    zip_code:
+      invalid_zip_code: "inválido"

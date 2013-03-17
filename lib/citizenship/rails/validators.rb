@@ -28,7 +28,15 @@ module Citizenship
       class EmailValidator < ActiveModel::EachValidator
         def validate_each(record, attribute, value)
           Citizenship.valid_email!(value) if value.present?
-        rescue Citizenship::PhoneError => e
+        rescue Citizenship::EmailError => e
+          record.errors[attribute] << (options[:message] || e.message)
+        end
+      end
+
+      class ZipCodeValidator < ActiveModel::EachValidator
+        def validate_each(record, attribute, value)
+          Citizenship.valid_zip_code!(value) if value.present?
+        rescue Citizenship::ZipCodeError => e
           record.errors[attribute] << (options[:message] || e.message)
         end
       end
