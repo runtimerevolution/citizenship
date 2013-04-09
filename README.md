@@ -26,3 +26,5 @@ Or install it yourself as:
 
 ## License
 Copyright © 2013 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
+
+[![githalytics.com alpha](https://cruel-carlota.pagodabox.com/7cc60ea6c507d8f33d746a6326e1b059 "githalytics.com")](http://githalytics.com/runtimerevolution/citizenship)
