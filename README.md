@@ -1,6 +1,6 @@
 # Citizenship
 
-[![Gem Version](https://badge.fury.io/rb/citizen.svg)](http://badge.fury.io/rb/citizen)
+[![Gem Version](https://badge.fury.io/rb/citizenship.svg)](http://badge.fury.io/rb/citizenship)
 [![Build Status](https://travis-ci.org/runtimerevolution/citizenship.svg?branch=master)](https://travis-ci.org/runtimerevolution/citizenship)
 [![Code Climate](https://codeclimate.com/github/runtimerevolution/citizenship/badges/gpa.svg)](https://codeclimate.com/github/runtimerevolution/citizenship)
 [![Dependency Status](https://gemnasium.com/runtimerevolution/citizenship.svg)](https://gemnasium.com/runtimerevolution/citizenship)
