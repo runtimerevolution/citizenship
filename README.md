@@ -90,7 +90,7 @@ result=Citizenship.valid_email?("@example.org") # returns false (due to missing 
 
 ## Rails Validators
 
-We provide a useful range of Rails validators that you can include in your models, namelly:
+We provide a useful range of Rails validators that you can include in your models, namely:
 
 * NifValidator
 * NibValidator
