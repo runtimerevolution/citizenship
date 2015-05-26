@@ -1,5 +1,8 @@
 # Citizenship
 
+[![Build Status](https://travis-ci.org/runtimerevolution/citizenship.svg?branch=master)](https://travis-ci.org/runtimerevolution/citizenship)
+[![Code Climate](https://codeclimate.com/github/runtimerevolution/citizenship/badges/gpa.svg)](https://codeclimate.com/github/runtimerevolution/citizenship)
+
 Citizenship provides a set of easy validations on personal documents, addresses, bank account numbers and other personal information, of Portuguese citizens or of citizens living in Portugal ;)
 
 It supports validation of:
