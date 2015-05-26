@@ -1,0 +1,10 @@
+1.0.0
+
+  * Public version, published to Rubygems
+  * Updated tests in order to run with recent RSpec
+  * Updated documentation and added this CHANGELOG
+  * Updated gemspec
+
+0.0.1.beta
+
+  * First "internal" version (not tagged)

@@ -9,7 +9,8 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Runtime Revolution"]
   gem.description   = %q{citizenship checks validity of civil id numbers and similar}
   gem.summary       = %q{citizenship checks validity of civil id numbers and similar}
-  gem.homepage      = ""
+  gem.homepage      = "https://github.com/runtimerevolution/citizenship"
+  gem.email         = 'info@runtime-revolution.com'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
