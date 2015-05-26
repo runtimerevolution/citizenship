@@ -63,7 +63,7 @@ phone=Citizenship.valid_phone!('+351 93 933 2233') # returns "+351 93 933 2233"
 ### Identification Card
 
 ```ruby 
-result=Citizenship.valid_identification_card?('156 944 80', '4') # returns ture
+result=Citizenship.valid_identification_card?('156 944 80', '4') # returns true
 id=Citizenship.valid_identification_card!('156 944 8', '8') # returns '156 944 8'
 ```
 
