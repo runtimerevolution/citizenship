@@ -1,9 +1,6 @@
 require 'pathname'
 require 'i18n'
 
-I18n.load_path += Dir[Pathname.new(File.expand_path('lib')).join('locales', '*.{rb,yml}')]
-I18n.default_locale = "pt-PT"
-
 module Citizenship
   class Error < StandardError
     def initialize(key, values = {}, scope)

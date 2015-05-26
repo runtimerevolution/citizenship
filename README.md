@@ -7,9 +7,9 @@ It supports validation of:
 - NIB (i.e. "banking account number")
 - NIF (i.e. "fiscal number")
 - local phone numbers
-- identification card
-- citizen card
-- zip code
+- identification card ('bilhetes de identidade'), were the old id Portuguese id documents. They are no longer issue, but many haven't yet expired, so are still used alongside the Citizen Card.
+- citizen card ('cartão do cidadão'), are the new ID cards currently in use
+- zip code (partial validation)
 - e-mail (well, just because :) )
 
 
@@ -36,6 +36,7 @@ and use it standalone.
 ```ruby 
 result=Citizenship.valid_nib?("003503730000539151280") # returns true
 result=Citizenship.valid_nib?('0035.03730000539.1512.80') # returns true
+result=Citizenship.valid_nib?('38476129847') # returns false (since it fails proper size and CRC)
 result=Citizenship.valid_nib?('0035.03730000539.1512.80', strict: true) # returns false
 Citizenship.valid_nib!(nib) # raises Citizenship::Error if invalid
 ```
@@ -55,7 +56,7 @@ result=Citizenship.valid_nif?(' 123456789', strict: true) # returns false (stric
 phone=Citizenship.valid_phone!('+351 96 933 2233', only_prefixes: ['93', '96']) # returns "+351 96 933 2233"
 phone=Citizenship.valid_phone!('262-999-666') # returns "262-999-666"
 result=Citizenship.valid_phone?('262999666', strict: true) # returns true
-result=Citizenship.valid_phone?('+351 93 933 2233', allow_country_prefix: false) # returns false
+result=Citizenship.valid_phone?('+351 93 933 2233', allow_country_prefix: false) # returns false (since country prefix was used)
 phone=Citizenship.valid_phone!('+351 93 933 2233') # returns "+351 93 933 2233"
 ```
 
@@ -76,16 +77,51 @@ id=Citizenship.valid_citizen_card('00000000-0-ZZ-4') # returns '00000000-0-ZZ-4'
 ### Zip Code
 
 ```ruby 
-result=Citizenship.valid_nif?("123456789") # returns true
+result=Citizenship.valid_zip_code?('1000-100') # returns true
 ```
 
 ### E-mail
 
 ```ruby 
 result=Citizenship.valid_email?("user@example.org") # returns true
-result=Citizenship.valid_email?("  user@example.org ") # returns false
-result=Citizenship.valid_email?("@example.org") # returns false
+result=Citizenship.valid_email?("  user@example.org ") # returns false (due to whitespaces)
+result=Citizenship.valid_email?("@example.org") # returns false (due to missing user)
 ```
+
+## Rails Validators
+
+We provide a useful range of Rails validators that you can include in your models, namelly:
+
+* NifValidator
+* NibValidator
+* PhoneValidator
+* EmailValidator
+* ZipCodeValidor
+
+### Example
+
+
+    class User < ActiveRecord::Base
+      validates :fiscal_number, nif: true
+      ...
+    end
+ 
+
+## Future Developments
+
+* Support full zip code validation
+* Support IBAN
+* Support validating documents for other EU countries
+
+## References
+
+* [NIB](http://pt.wikipedia.org/wiki/N%C3%BAmero_de_Identifica%C3%A7%C3%A3o_Banc%C3%A1ria)
+* [NIF](http://pt.wikipedia.org/wiki/N%C3%BAmero_de_identifica%C3%A7%C3%A3o_fiscal)
+* [Citizen Card](http://www.cartaodecidadao.pt/images/stories/Algoritmo_Num_Documento_CC.pdf)
+* [(old) Identification Card](http://geramat.blogs.sapo.pt/13528.html)
+* [ZIP codes](http://pt.wikipedia.org/wiki/N%C3%BAmero_de_Identifica%C3%A7%C3%A3o_Banc%C3%A1ria)
+
+
 
 ## Contributing
 

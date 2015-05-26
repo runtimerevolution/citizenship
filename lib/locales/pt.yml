@@ -1,0 +1,22 @@
+"pt":
+  citizenship:
+    nif:
+      size: "deve conter 9 digitos"
+      prefix: "o primeiro digito tem de ser um dos seguintes: %{prefixes}"
+      invalid_check_digit: "inválido"
+    nib:
+      size: "deve conter 21 digitos"
+      invalid_bank_code: "Código bancário inválido: %{bank_code}"
+      invalid_check_digit: "inválido"
+    citizen_card:
+      size: "Tamanho inválido"
+      invalid_check_digit: "Cartão de cidadão inválido"
+    identification_card:
+      size: "Tamanho inválido"
+      invalid_check_digit: "inválido"
+    phone:
+      invalid_phone_number: "inválido"
+    email:
+      invalid_email: "inválido"
+    zip_code:
+      invalid_zip_code: "inválido"

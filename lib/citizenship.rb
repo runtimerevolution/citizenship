@@ -37,3 +37,5 @@ module Citizenship
     String(str).delete(' ').delete('-').delete('.')
   end
 end
+
+I18n.load_path += Dir.glob( File.join(File.dirname(__FILE__), 'locales'.freeze, '*.yml'.freeze) )
