@@ -3,6 +3,7 @@ describe 'Zip code validation' do
     expect(Citizenship.valid_zip_code?('1000-100')).to be_truthy
     expect(Citizenship.valid_zip_code?('1200-214', full_validation: true)).to be_truthy
     expect(Citizenship.valid_zip_code?('1200-999', full_validation: true)).to be_falsy
+    expect(Citizenship.valid_zip_code?('1200-998', full_validation: true)).to be_truthy
   end
 
   it 'fails for invalid Zip codes' do
