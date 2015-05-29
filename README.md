@@ -4,6 +4,8 @@
 [![Build Status](https://travis-ci.org/runtimerevolution/citizenship.svg?branch=master)](https://travis-ci.org/runtimerevolution/citizenship)
 [![Code Climate](https://codeclimate.com/github/runtimerevolution/citizenship/badges/gpa.svg)](https://codeclimate.com/github/runtimerevolution/citizenship)
 [![Dependency Status](https://gemnasium.com/runtimerevolution/citizenship.svg)](https://gemnasium.com/runtimerevolution/citizenship)
+[![security](https://hakiri.io/github/runtimerevolution/citizenship/master.svg)](https://hakiri.io/github/runtimerevolution/citizenship/master)
+
 
 Citizenship provides a set of easy validations on personal documents, addresses, bank account numbers and other personal information, of Portuguese citizens or of citizens living in Portugal ;)
 
