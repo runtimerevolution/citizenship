@@ -97,17 +97,18 @@ result=Citizenship.valid_email?("@example.org") # returns false (due to missing 
 
 We provide a useful range of Rails validators that you can include in your models, namely:
 
-* NifValidator
-* NibValidator
-* PhoneValidator
-* EmailValidator
-* ZipCodeValidor
+* NifValidator ("nif")
+* NibValidator ("nib")
+* PhoneValidator ("phone")
+* EmailValidator ("email")
+* ZipCodeValidator ("zip_code")
 
 ### Example
 
 
     class User < ActiveRecord::Base
       validates :fiscal_number, nif: true
+      validates :mobile, phone: { allow_country_prefix: false }
       ...
     end
  
@@ -139,3 +140,9 @@ We provide a useful range of Rails validators that you can include in your model
 ## License
 Copyright © 2015 [Runtime Revolution](http://www.runtime-revolution.com), released under the MIT license.
 
+## About Runtime Revolution
+
+![Runtime Revolution](http://webpublishing.s3.amazonaws.com/runtime_small_logo.png)
+
+Citizenship is maintained by [Runtime Revolution](http://www.runtime-revolution.com).
+See our [other projects](https://github.com/runtimerevolution/) and check out our [blog](http://www.runtime-revolution.com/runtime/blog) for the latest updates.

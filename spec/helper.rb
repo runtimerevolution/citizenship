@@ -1,5 +1,7 @@
 require 'simplecov'
 require 'pry'
+require 'coveralls'
+Coveralls.wear!
 
 #setup simplecov
 SimpleCov.start do
