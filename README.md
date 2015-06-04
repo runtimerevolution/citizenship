@@ -1,5 +1,7 @@
 # Citizenship
 
+[![Join the chat at https://gitter.im/runtimerevolution/citizenship](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/runtimerevolution/citizenship?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Gem Version](https://badge.fury.io/rb/citizenship.svg)](http://badge.fury.io/rb/citizenship)
 [![Build Status](https://travis-ci.org/runtimerevolution/citizenship.svg?branch=master)](https://travis-ci.org/runtimerevolution/citizenship)
 [![Code Climate](https://codeclimate.com/github/runtimerevolution/citizenship/badges/gpa.svg)](https://codeclimate.com/github/runtimerevolution/citizenship)
