@@ -3,7 +3,7 @@ module Citizenship
   def self.valid_nif!(number, options = {})
     strict = options.fetch(:strict, false)
     id_number = strict ? number : String(number).delete(' ')
-    first_digit_universe = [1, 2, 5, 6, 8, 9]
+    first_digit_universe = [1, 2, 3, 5, 6, 8, 9]
 
     raise NIFError.new(:size) if id_number.size != 9
     raise NIFError.new(:prefix, prefixes: first_digit_universe.join(', ')) unless first_digit_universe.include?(id_number[0].to_i)
